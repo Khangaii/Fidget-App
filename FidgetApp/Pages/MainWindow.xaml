@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FidgetApp"
         mc:Ignorable="d"
-        Title="Fidget App" WindowState="Maximized" WindowStyle="None" 
+        Title="Fidget App" WindowState="Maximized" WindowStyle="None" ShowInTaskbar="False"
         AllowsTransparency="True" Background="Transparent" Topmost="True"
         ContentRendered="Window_ContentRendered" Deactivated="Window_Deactivated">
     <DockPanel>
