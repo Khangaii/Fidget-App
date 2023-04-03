@@ -39,11 +39,6 @@ namespace FidgetApp
             physicsBall.Draw();
         }
 
-        private void Ball_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             previousMousePosition.X = Mouse.GetPosition(this).X;
