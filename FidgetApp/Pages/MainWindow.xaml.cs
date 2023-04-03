@@ -24,11 +24,13 @@ namespace FidgetApp
         private Ellipse ball;
         private PhysicsBall physicsBall;
         private double ballRadius = 100;
-        private Color ballColor = Colors.SlateBlue;
+        private Color ballColor;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            ballColor = Color.FromArgb(255, 114, 134, 211);
         }
 
         private void CompositionTarget_Rendering(object sender, EventArgs e)
