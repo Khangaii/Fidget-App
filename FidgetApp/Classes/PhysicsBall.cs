@@ -84,17 +84,17 @@ namespace FidgetApp.Classes
 
         private void _uiElement_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            // Drag the ball
+            // Drag the ball with a slight delay
             if (_uiElement.IsMouseCaptured)
             {
-                _position = (Vector)e.GetPosition(_parentCanvas) - _dragOffsest;
+                Vector dragPosition = (Vector)e.GetPosition(_parentCanvas) - _dragOffsest;
+                _velocity = Vector.Subtract( dragPosition, _position ) / 2;
             }
         }
 
         private void _uiElement_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             // Release the ball
-            _velocity = Vector.Subtract((Vector)e.GetPosition(_parentCanvas), _previousMousePosition);
             _uiElement.ReleaseMouseCapture();
         }
 
@@ -115,17 +115,16 @@ namespace FidgetApp.Classes
 
         public void Update()
         {
-            if (!_uiElement.IsMouseCaptured)
-            {
+            if(!_uiElement.IsMouseCaptured)
                 ApplyForce(_gravity);
-                ApplyForce(getWindResistanceForce());
 
-                _velocity += _acceleration;
-                _position += _velocity;
+            ApplyForce(getWindResistanceForce());
 
-                _acceleration.X = 0;
-                _acceleration.Y = 0;
-            }
+            _velocity += _acceleration;
+            _position += _velocity;
+
+            _acceleration.X = 0;
+            _acceleration.Y = 0;
 
             DetectCollision();
 
