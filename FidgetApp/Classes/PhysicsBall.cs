@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Converters;
 using System.Windows.Shapes;
 
 namespace FidgetApp.Classes
@@ -141,24 +142,44 @@ namespace FidgetApp.Classes
 
         private void DetectCollision()
         {
+            bool isTouchingHorizontalWalls = false;
+            bool isTouchingVerticalWalls = false;
+
             if (_position.X - _radius < 0)
             {
                 _position.X = _radius;
                 _velocity.X *= -_bounceDampeningConstant;
+                isTouchingHorizontalWalls = true;
             } else if (_position.X + _radius > _parentCanvas.ActualWidth)
             {
                 _position.X = _parentCanvas.ActualWidth - _radius;
                 _velocity.X *= -_bounceDampeningConstant;
+                isTouchingHorizontalWalls = true;
             }
 
             if (_position.Y - _radius < 0)
             {
                 _position.Y = _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
+                isTouchingVerticalWalls = true;
             } else if (_position.Y + _radius > _parentCanvas.ActualHeight)
             {
                 _position.Y = _parentCanvas.ActualHeight - _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
+                isTouchingVerticalWalls = true;
+            }
+
+            if (_uiElement.IsMouseCaptured)
+            {
+                if (isTouchingHorizontalWalls)
+                {
+                    _velocity.X = 0;
+                }
+
+                if (isTouchingVerticalWalls)
+                {
+                    _velocity.Y = 0;
+                }
             }
         }
     }
