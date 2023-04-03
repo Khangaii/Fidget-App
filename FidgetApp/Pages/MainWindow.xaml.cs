@@ -23,7 +23,7 @@ namespace FidgetApp
 
         private Ellipse ball;
         private PhysicsBall physicsBall;
-        private double ballRadius = 75;
+        private double ballRadius = 100;
         private Color ballColor = Colors.SlateBlue;
 
         public MainWindow()

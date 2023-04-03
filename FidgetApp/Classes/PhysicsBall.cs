@@ -40,15 +40,13 @@ namespace FidgetApp.Classes
         private double _mass;
 
         // Environmental constants
-        private Vector _gravity;
+        private double _gravityConstant = 1;
         private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
 
         public PhysicsBall(Canvas parentCanvas, double radius, Color color, 
                            Vector position, Vector? velocity = null, Vector? acceleration = null)
         {
-            _gravity = new Vector(0, 30);
-
             _parentCanvas = parentCanvas;
 
             _uiElement = new Ellipse
@@ -104,6 +102,15 @@ namespace FidgetApp.Classes
             _acceleration += force / _mass;
         }
 
+        private Vector getGravityForce()
+        {
+            Vector gravity = new Vector(0, _gravityConstant);
+
+            gravity *= _mass;
+
+            return gravity;
+        }
+
         private Vector getWindResistanceForce()
         {
             Vector windResistance = _velocity;
@@ -117,7 +124,7 @@ namespace FidgetApp.Classes
         public void Update()
         {
             if(!_uiElement.IsMouseCaptured)
-                ApplyForce(_gravity);
+                ApplyForce(getGravityForce());
 
             ApplyForce(getWindResistanceForce());
 
