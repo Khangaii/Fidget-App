@@ -40,13 +40,13 @@ namespace FidgetApp.Classes
 
         // Environmental constants
         private Vector _gravity;
-        private double _windResistanceConstant = 0.00002;
+        private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
 
         public PhysicsBall(Canvas parentCanvas, double radius, Color color, 
                            Vector position, Vector? velocity = null, Vector? acceleration = null)
         {
-            _gravity = new Vector(0, 25);
+            _gravity = new Vector(0, 30);
 
             _parentCanvas = parentCanvas;
 
