@@ -101,7 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\FidgetSpinner.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\FidgetSpinner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

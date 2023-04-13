@@ -40,7 +40,7 @@ namespace FidgetApp.Classes
         private double _mass;
 
         // Environmental constants
-        private double _gravityConstant = 1;
+        private double _gravitationalConstant = 1;
         private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
 
@@ -104,7 +104,7 @@ namespace FidgetApp.Classes
 
         private Vector getGravityForce()
         {
-            Vector gravity = new Vector(0, _gravityConstant);
+            Vector gravity = new Vector(0, _gravitationalConstant);
 
             gravity *= _mass;
 
