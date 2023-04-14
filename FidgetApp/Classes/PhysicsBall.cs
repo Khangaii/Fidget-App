@@ -33,6 +33,10 @@ namespace FidgetApp.Classes
         // Offset between the center of the ball and the dragged point
         private Vector _dragOffsest;
 
+        // The i and j unit vectors
+        private readonly Vector _iVector = new Vector(1, 0);
+        private readonly Vector _jVector = new Vector(0, 1);
+
         private Vector _position;
         private Vector _velocity;
         private Vector _acceleration;
@@ -43,6 +47,7 @@ namespace FidgetApp.Classes
         private double _gravitationalConstant = 1;
         private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
+        private double _frictionalForceConstant = 0.005;
 
         public PhysicsBall(Canvas parentCanvas, double radius, Color color, 
                            Vector position, Vector? velocity = null, Vector? acceleration = null)
@@ -121,6 +126,18 @@ namespace FidgetApp.Classes
             return windResistance;
         }
 
+        private Vector getFrictionalForce(Vector? direction = null)
+        {
+            Vector frictionalForce = direction ?? _velocity;
+            frictionalForce *= Math.Cos( Vector.AngleBetween(frictionalForce, _velocity) );
+            if (_velocity.LengthSquared != 0) { frictionalForce.Normalize(); }
+            frictionalForce *= -_frictionalForceConstant * _mass * Vector.Multiply(frictionalForce, _velocity);
+            
+
+
+            return frictionalForce;
+        }
+
         public void Update()
         {
             if(!_uiElement.IsMouseCaptured)
@@ -156,11 +173,17 @@ namespace FidgetApp.Classes
             {
                 _position.X = _radius;
                 _velocity.X *= -_bounceDampeningConstant;
+
+                ApplyForce(getFrictionalForce(_jVector));
+
                 isTouchingHorizontalWalls = true;
             } else if (_position.X + _radius > _parentCanvas.ActualWidth)
             {
                 _position.X = _parentCanvas.ActualWidth - _radius;
                 _velocity.X *= -_bounceDampeningConstant;
+
+                ApplyForce(getFrictionalForce(_jVector));
+
                 isTouchingHorizontalWalls = true;
             }
 
@@ -168,11 +191,17 @@ namespace FidgetApp.Classes
             {
                 _position.Y = _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
+
+                ApplyForce(getFrictionalForce(_iVector));
+
                 isTouchingVerticalWalls = true;
             } else if (_position.Y + _radius > _parentCanvas.ActualHeight)
             {
                 _position.Y = _parentCanvas.ActualHeight - _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
+
+                ApplyForce(getFrictionalForce(_iVector));
+
                 isTouchingVerticalWalls = true;
             }
 

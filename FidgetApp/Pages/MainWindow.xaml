@@ -12,7 +12,8 @@
     <DockPanel>
         <tb:TaskbarIcon 
             IconSource="/Resources/Icons/FidgetSpinner.ico"
-            ToolTipText="Fidget App" />
+            ToolTipText="Fidget App"
+            Visibility="Visible" />
 
         <Canvas Name="AppCanvas">
             
