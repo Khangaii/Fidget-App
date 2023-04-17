@@ -47,7 +47,7 @@ namespace FidgetApp.Classes
         private double _gravitationalConstant = 1;
         private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
-        private double _frictionalForceConstant = 0.005;
+        //private double _frictionalForceConstant = 0.01;
 
         public PhysicsBall(Canvas parentCanvas, double radius, Color color, 
                            Vector position, Vector? velocity = null, Vector? acceleration = null)
@@ -126,17 +126,24 @@ namespace FidgetApp.Classes
             return windResistance;
         }
 
-        private Vector getFrictionalForce(Vector? direction = null)
-        {
-            Vector frictionalForce = direction ?? _velocity;
-            frictionalForce *= Math.Cos( Vector.AngleBetween(frictionalForce, _velocity) );
-            if (_velocity.LengthSquared != 0) { frictionalForce.Normalize(); }
-            frictionalForce *= -_frictionalForceConstant * _mass * Vector.Multiply(frictionalForce, _velocity);
+        //private Vector getFrictionalForce(Vector direction = new Vector())
+        //{
+        //    if(direction.LengthSquared == 0)
+        //    {
+        //        return new Vector(0, 0);
+        //    }
+
+        //    Vector frictionalForce = direction;
+        //    Vector normalForce = new Vector(-direction.Y, direction.X);
+
+        //    frictionalForce *= Math.Cos( Vector.AngleBetween(direction, _velocity) );
+        //    if (frictionalForce.LengthSquared != 0) { frictionalForce.Normalize(); }
+        //    frictionalForce *= -_frictionalForceConstant * Vector.Multiply(normalForce, _acceleration) * Vector.Multiply(frictionalForce, _velocity);
             
 
 
-            return frictionalForce;
-        }
+        //    return frictionalForce;
+        //}
 
         public void Update()
         {
@@ -145,13 +152,13 @@ namespace FidgetApp.Classes
 
             ApplyForce(getWindResistanceForce());
 
+            DetectCollision();
+
             _velocity += _acceleration;
             _position += _velocity;
 
             _acceleration.X = 0;
             _acceleration.Y = 0;
-
-            DetectCollision();
 
             _previousMousePosition = (Vector)Mouse.GetPosition(_parentCanvas);
         }
@@ -164,7 +171,7 @@ namespace FidgetApp.Classes
             Canvas.SetTop(_uiElement, newPosition.Y);
         }
 
-        private void DetectCollision()
+        private Vector DetectCollision()
         {
             bool isTouchingHorizontalWalls = false;
             bool isTouchingVerticalWalls = false;
@@ -174,15 +181,11 @@ namespace FidgetApp.Classes
                 _position.X = _radius;
                 _velocity.X *= -_bounceDampeningConstant;
 
-                ApplyForce(getFrictionalForce(_jVector));
-
                 isTouchingHorizontalWalls = true;
             } else if (_position.X + _radius > _parentCanvas.ActualWidth)
             {
                 _position.X = _parentCanvas.ActualWidth - _radius;
                 _velocity.X *= -_bounceDampeningConstant;
-
-                ApplyForce(getFrictionalForce(_jVector));
 
                 isTouchingHorizontalWalls = true;
             }
@@ -192,31 +195,31 @@ namespace FidgetApp.Classes
                 _position.Y = _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
 
-                ApplyForce(getFrictionalForce(_iVector));
-
                 isTouchingVerticalWalls = true;
             } else if (_position.Y + _radius > _parentCanvas.ActualHeight)
             {
                 _position.Y = _parentCanvas.ActualHeight - _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
 
-                ApplyForce(getFrictionalForce(_iVector));
-
                 isTouchingVerticalWalls = true;
             }
 
-            if (_uiElement.IsMouseCaptured)
+            if (isTouchingHorizontalWalls)
             {
-                if (isTouchingHorizontalWalls)
-                {
+                if (_uiElement.IsMouseCaptured)
                     _velocity.X = 0;
-                }
 
-                if (isTouchingVerticalWalls)
-                {
-                    _velocity.Y = 0;
-                }
+                return _iVector;
             }
+            if (isTouchingVerticalWalls)
+            {
+                if (_uiElement.IsMouseCaptured)
+                    _velocity.Y = 0;
+
+                return _jVector;
+            }
+
+            return new Vector(0, 0);
         }
     }
 }
