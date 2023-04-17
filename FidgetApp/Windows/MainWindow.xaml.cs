@@ -21,7 +21,6 @@ namespace FidgetApp
     {
         public Vector previousMousePosition;
 
-        private Ellipse ball;
         private PhysicsBall physicsBall;
         private double ballRadius = 75;
         private Color ballColor;

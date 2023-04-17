@@ -126,25 +126,6 @@ namespace FidgetApp.Classes
             return windResistance;
         }
 
-        //private Vector getFrictionalForce(Vector direction = new Vector())
-        //{
-        //    if(direction.LengthSquared == 0)
-        //    {
-        //        return new Vector(0, 0);
-        //    }
-
-        //    Vector frictionalForce = direction;
-        //    Vector normalForce = new Vector(-direction.Y, direction.X);
-
-        //    frictionalForce *= Math.Cos( Vector.AngleBetween(direction, _velocity) );
-        //    if (frictionalForce.LengthSquared != 0) { frictionalForce.Normalize(); }
-        //    frictionalForce *= -_frictionalForceConstant * Vector.Multiply(normalForce, _acceleration) * Vector.Multiply(frictionalForce, _velocity);
-            
-
-
-        //    return frictionalForce;
-        //}
-
         public void Update()
         {
             if(!_uiElement.IsMouseCaptured)
@@ -152,13 +133,13 @@ namespace FidgetApp.Classes
 
             ApplyForce(getWindResistanceForce());
 
-            DetectCollision();
-
             _velocity += _acceleration;
             _position += _velocity;
 
             _acceleration.X = 0;
             _acceleration.Y = 0;
+
+            DetectCollision();
 
             _previousMousePosition = (Vector)Mouse.GetPosition(_parentCanvas);
         }
@@ -171,7 +152,7 @@ namespace FidgetApp.Classes
             Canvas.SetTop(_uiElement, newPosition.Y);
         }
 
-        private Vector DetectCollision()
+        private void DetectCollision()
         {
             bool isTouchingHorizontalWalls = false;
             bool isTouchingVerticalWalls = false;
@@ -204,22 +185,17 @@ namespace FidgetApp.Classes
                 isTouchingVerticalWalls = true;
             }
 
-            if (isTouchingHorizontalWalls)
+            if (_uiElement.IsMouseCaptured)
             {
-                if (_uiElement.IsMouseCaptured)
+                if (isTouchingHorizontalWalls)
+                {
                     _velocity.X = 0;
-
-                return _iVector;
-            }
-            if (isTouchingVerticalWalls)
-            {
-                if (_uiElement.IsMouseCaptured)
+                }
+                if (isTouchingVerticalWalls)
+                {
                     _velocity.Y = 0;
-
-                return _jVector;
+                }
             }
-
-            return new Vector(0, 0);
         }
     }
 }
