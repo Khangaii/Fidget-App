@@ -8,13 +8,33 @@
         Title="AppControlWindow" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
         WindowStyle="None" Topmost="True">
     <Grid x:Name="AppMenu">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="5" />
+            </Style>
+            <Style TargetType="ToggleButton">
+                <Setter Property="Padding" Value="5" />
+            </Style>
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
 
-        <Button Grid.Row="1" Click="Exit">X</Button>
+        <Grid x:Name="AppModes" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <ToggleButton Grid.Row="0">⚽</ToggleButton>
+            <ToggleButton Grid.Row="1">🎯</ToggleButton>
+        </Grid>
+
+        <Button Grid.Row="2" Click="Exit">X</Button>
     </Grid>
 </Window>
