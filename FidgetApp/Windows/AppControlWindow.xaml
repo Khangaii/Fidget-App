@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="AppControlWindow" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
         WindowStyle="None" Topmost="True">
-    <Grid>
+    <Grid x:Name="AppMenu">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Click="Menu_ToggleCollapse">▽</Button>
+        <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
 
         <Button Grid.Row="1" Click="Exit">X</Button>
     </Grid>

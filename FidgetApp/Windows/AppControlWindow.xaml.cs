@@ -32,9 +32,24 @@ namespace FidgetApp.Windows
             Application.Current.Shutdown();
         }
 
-        private void Menu_ToggleCollapse(object sender, RoutedEventArgs e)
+        private void AppMenu_ToggleCollapse(object sender, RoutedEventArgs e)
         {
-
+            if (MenuCollapse_ToggleButton.IsChecked == true)
+            {
+                MenuCollapse_ToggleButton.Content = "△";
+                for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
+                {
+                    AppMenu.RowDefinitions[i].Height = new GridLength(0);
+                }
+            }
+            else
+            {
+                MenuCollapse_ToggleButton.Content = "▽";
+                for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
+                {
+                    AppMenu.RowDefinitions[i].Height = GridLength.Auto;
+                }
+            }
         }
     }
 }
