@@ -1,4 +1,5 @@
 ﻿using FidgetApp.Classes;
+using FidgetApp.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace FidgetApp
+namespace FidgetApp.Windows
 {
-    public partial class MainWindow : Window
+    public partial class PhysicsBallWindow : Window
     {
         public Vector previousMousePosition;
 
@@ -25,7 +26,7 @@ namespace FidgetApp
         private double ballRadius = 75;
         private Color ballColor;
 
-        public MainWindow()
+        public PhysicsBallWindow()
         {
             InitializeComponent();
 

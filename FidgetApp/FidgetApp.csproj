@@ -58,7 +58,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\Page1.xaml">
+    <Compile Include="Windows\AppControlWindow.xaml.cs">
+      <DependentUpon>AppControlWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PhysicsBallWindow.xaml.cs">
+      <DependentUpon>PhysicsBallWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\AppControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,13 +77,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\PhysicsBall.cs" />
-    <Compile Include="Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\PhysicsBallWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -108,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\FidgetSpinner.ico" />
