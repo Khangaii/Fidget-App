@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FidgetApp.Windows"
         mc:Ignorable="d"
-        Title="AppControlWindow" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
+        Title="Fidger App" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
         WindowStyle="None" Topmost="True">
     <Grid x:Name="AppMenu">
         <Grid.Resources>
@@ -26,13 +26,20 @@
         <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
 
         <Grid x:Name="AppModes" Grid.Row="1">
+            <Grid.Resources>
+                <Style TargetType="ToggleButton">
+                    <EventSetter Event="Checked" Handler="AppMode_Checked" />
+                    <EventSetter Event="Unchecked" Handler="AppMode_Unchecked" />
+                </Style>
+            </Grid.Resources>
+            
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
             
-            <ToggleButton Grid.Row="0">⚽</ToggleButton>
-            <ToggleButton Grid.Row="1">🎯</ToggleButton>
+            <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">⚽</ToggleButton>
+            <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">🎯</ToggleButton>
         </Grid>
 
         <Button Grid.Row="2" Click="Exit">X</Button>

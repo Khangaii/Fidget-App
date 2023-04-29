@@ -58,12 +58,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\AimTrainerWindow.xaml.cs">
+      <DependentUpon>AimTrainerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AppControlWindow.xaml.cs">
       <DependentUpon>AppControlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\PhysicsBallWindow.xaml.cs">
       <DependentUpon>PhysicsBallWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Windows\AimTrainerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AppControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
