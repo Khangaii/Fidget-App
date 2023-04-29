@@ -37,6 +37,9 @@ namespace FidgetApp.Windows
         {
             physicsBall.Update();
             physicsBall.Draw();
+
+            previousMousePosition.X = Mouse.GetPosition(this).X;
+            previousMousePosition.Y = Mouse.GetPosition(this).Y;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
