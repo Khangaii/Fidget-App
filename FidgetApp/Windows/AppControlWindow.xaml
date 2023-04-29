@@ -36,7 +36,28 @@
             <tb:TaskbarIcon 
                 IconSource="/Resources/Icons/FidgetSpinner.ico"
                 ToolTipText="Fidget App"
-                Visibility="Visible" />
+                Visibility="Visible"
+                PopupActivation="RightClick">
+                
+                <tb:TaskbarIcon.TrayToolTip>
+                    <Border Background="#313331" BorderBrush="Black" CornerRadius="5" Margin="0"  Padding="10" BorderThickness="0.2">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1" Direction="270" Color="black" Opacity="0.3" BlurRadius="1.5" />
+                        </Border.Effect>
+                        <TextBlock Foreground="White">Fidget App</TextBlock>
+                    </Border>
+                </tb:TaskbarIcon.TrayToolTip>
+
+                <tb:TaskbarIcon.TrayPopup>
+                    <Border Background="#313331" BorderBrush="Black" CornerRadius="5" Margin="0"  Padding="10" BorderThickness="0.2">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1" Direction="270" Color="black" Opacity="0.3" BlurRadius="1.5" />
+                        </Border.Effect>
+                        <TextBlock Foreground="White">Never gonna give you up</TextBlock>
+                    </Border>
+                </tb:TaskbarIcon.TrayPopup>
+                
+            </tb:TaskbarIcon>
 
             <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
 
