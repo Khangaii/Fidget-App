@@ -20,7 +20,7 @@ namespace FidgetApp.Classes
             _parentCanvas = parentCanvas;
 
             _target = new Target(parentCanvas: parentCanvas, radius: 75, 
-                position: new Vector(500, 500));
+                position: new Vector(_parentCanvas.ActualWidth / 2, _parentCanvas.ActualHeight / 2));
         }
 
         public void Draw()

@@ -35,7 +35,8 @@ namespace FidgetApp.Classes
             {
                 Width = radius * 2,
                 Height = radius * 2,
-                Source = imageSource
+                Source = imageSource,
+                Opacity = 0.75
             };
             _parentCanvas.Children.Add(_uiElement);
 

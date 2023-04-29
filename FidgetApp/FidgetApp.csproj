@@ -136,5 +136,15 @@
     <Resource Include="Resources\Images\Target_1.png" />
     <Resource Include="Resources\Images\Target_2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Target_10.png" />
+    <Resource Include="Resources\Images\Target_3.png" />
+    <Resource Include="Resources\Images\Target_4.png" />
+    <Resource Include="Resources\Images\Target_5.png" />
+    <Resource Include="Resources\Images\Target_6.png" />
+    <Resource Include="Resources\Images\Target_7.png" />
+    <Resource Include="Resources\Images\Target_8.png" />
+    <Resource Include="Resources\Images\Target_9.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
