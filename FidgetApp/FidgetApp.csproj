@@ -66,6 +66,9 @@
     <Compile Include="Windows\AppControlWindow.xaml.cs">
       <DependentUpon>AppControlWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LanternWindow.xaml.cs">
+      <DependentUpon>LanternWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\PhysicsBallWindow.xaml.cs">
       <DependentUpon>PhysicsBallWindow.xaml</DependentUpon>
     </Compile>
@@ -74,6 +77,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AppControlWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LanternWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -99,5 +99,10 @@ namespace FidgetApp.Windows
                 toggleButton.IsChecked = true;
             }
         }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            this.Topmost = true;
+        }
     }
 }
