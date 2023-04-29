@@ -58,6 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\AimTrainer.cs" />
+    <Compile Include="Classes\Target.cs" />
     <Compile Include="Windows\AimTrainerWindow.xaml.cs">
       <DependentUpon>AimTrainerWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\FidgetSpinner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Target_1.png" />
+    <Resource Include="Resources\Images\Target_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

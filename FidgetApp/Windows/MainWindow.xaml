@@ -10,11 +10,6 @@
         AllowsTransparency="True" Background="Transparent" Topmost="True"
         ContentRendered="Window_ContentRendered" Deactivated="Window_Deactivated">
     <DockPanel>
-        <tb:TaskbarIcon 
-            IconSource="/Resources/Icons/FidgetSpinner.ico"
-            ToolTipText="Fidget App"
-            Visibility="Visible" />
-
         <Canvas Name="AppCanvas">
             
         </Canvas>

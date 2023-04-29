@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FidgetApp.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,35 @@ namespace FidgetApp.Windows
     /// </summary>
     public partial class AimTrainerWindow : Window
     {
+        public Vector previousMousePosition;
+
+        AimTrainer aimTrainer;
+
         public AimTrainerWindow()
         {
             InitializeComponent();
+        }
+
+        private void CompositionTarget_Rendering(object sender, EventArgs e)
+        {
+            aimTrainer.Draw();
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            previousMousePosition.X = Mouse.GetPosition(this).X;
+            previousMousePosition.Y = Mouse.GetPosition(this).Y;
+
+            aimTrainer = new AimTrainer(parentCanvas: AppCanvas);
+
+            aimTrainer.Draw();
+
+            CompositionTarget.Rendering += CompositionTarget_Rendering;
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            this.Topmost = true;
         }
     }
 }

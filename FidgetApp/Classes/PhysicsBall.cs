@@ -47,7 +47,6 @@ namespace FidgetApp.Classes
         private double _gravitationalConstant = 1;
         private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
-        //private double _frictionalForceConstant = 0.01;
 
         public PhysicsBall(Canvas parentCanvas, double radius, Color color, 
                            Vector position, Vector? velocity = null, Vector? acceleration = null)

@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:FidgetApp.Windows"
         mc:Ignorable="d"
         Title="Aim Trainer" WindowState="Maximized" WindowStyle="None" ShowInTaskbar="False"
-        AllowsTransparency="True" Background="Transparent" Topmost="True">
+        AllowsTransparency="True" Background="Transparent" Topmost="True"
+        ContentRendered="Window_ContentRendered" Deactivated="Window_Deactivated">
     <Grid>
         <Canvas x:Name="AppCanvas">
-            <Ellipse Canvas.Left="500" Canvas.Top="500" Width="100" Height="100" Fill="AliceBlue" />
+            
         </Canvas>
     </Grid>
 </Window>
