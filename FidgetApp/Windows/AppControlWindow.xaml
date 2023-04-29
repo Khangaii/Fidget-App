@@ -7,47 +7,56 @@
         xmlns:local="clr-namespace:FidgetApp.Windows"
         mc:Ignorable="d"
         Title="Fidger App" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
-        WindowStyle="None" Topmost="True" ShowInTaskbar="False">
-    <Grid x:Name="AppMenu">
-        <Grid.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Padding" Value="5" />
-            </Style>
-            <Style TargetType="ToggleButton">
-                <Setter Property="Padding" Value="5" />
-            </Style>
-        </Grid.Resources>
+        WindowStyle="None" AllowsTransparency="True" Topmost="True" ShowInTaskbar="False"
+        Background="Transparent">
+    <Grid>
+        <Grid x:Name="AppMenu_DraggableStrip" VerticalAlignment="Top" MouseLeftButtonDown="DragBar_MouseLeftButtonDown">
+            <Rectangle Height="10" RadiusX="2" RadiusY="2" Fill="DarkGray" />
+        </Grid>
         
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <tb:TaskbarIcon 
-            IconSource="/Resources/Icons/FidgetSpinner.ico"
-            ToolTipText="Fidget App"
-            Visibility="Visible" />
-
-        <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
-
-        <Grid x:Name="AppModes" Grid.Row="1">
+        <Grid x:Name="AppMenu" Margin="0,15,0,0">
             <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Focusable" Value="False" />
+                </Style>
                 <Style TargetType="ToggleButton">
-                    <EventSetter Event="Checked" Handler="AppMode_Checked" />
-                    <EventSetter Event="Unchecked" Handler="AppMode_Unchecked" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Focusable" Value="False" />
                 </Style>
             </Grid.Resources>
-            
+        
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            
-            <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">⚽</ToggleButton>
-            <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">🎯</ToggleButton>
-        </Grid>
 
-        <Button Grid.Row="2" Click="Exit">X</Button>
+            <tb:TaskbarIcon 
+                IconSource="/Resources/Icons/FidgetSpinner.ico"
+                ToolTipText="Fidget App"
+                Visibility="Visible" />
+
+            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
+
+            <Grid x:Name="AppModes" Grid.Row="1">
+                <Grid.Resources>
+                    <Style TargetType="ToggleButton">
+                        <EventSetter Event="Checked" Handler="AppMode_Checked" />
+                        <EventSetter Event="Unchecked" Handler="AppMode_Unchecked" />
+                    </Style>
+                </Grid.Resources>
+            
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+            
+                <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">⚽</ToggleButton>
+                <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">🎯</ToggleButton>
+            </Grid>
+
+            <Button Grid.Row="2" Click="Exit">X</Button>
+        </Grid>
     </Grid>
 </Window>

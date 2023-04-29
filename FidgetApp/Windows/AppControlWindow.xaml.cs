@@ -36,6 +36,11 @@ namespace FidgetApp.Windows
             Application.Current.Shutdown();
         }
 
+        private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
         private void AppMenu_ToggleCollapse(object sender, RoutedEventArgs e)
         {
             if (MenuCollapse_ToggleButton.IsChecked == true)

@@ -146,5 +146,9 @@
     <Resource Include="Resources\Images\Target_8.png" />
     <Resource Include="Resources\Images\Target_9.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\DragBar_1.png" />
+    <Resource Include="Resources\Images\DragBar_2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
