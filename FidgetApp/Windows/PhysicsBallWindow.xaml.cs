@@ -53,18 +53,6 @@ namespace FidgetApp.Windows
             CompositionTarget.Rendering += CompositionTarget_Rendering;
         }
 
-        private void SetUiElementPosition(UIElement uiElement, double elementPositionX = 0, double elementPositionY = 0)
-        {
-            Canvas.SetLeft(uiElement, elementPositionX);
-            Canvas.SetTop(uiElement, elementPositionY);
-        }
-
-        private void SetUiElementPosition(UIElement uiElement, Point elementPosition)
-        {
-            Canvas.SetLeft(uiElement, elementPosition.X);
-            Canvas.SetTop(uiElement, elementPosition.Y);
-        }
-
         private void Window_Deactivated(object sender, EventArgs e)
         {
             this.Topmost = true;
