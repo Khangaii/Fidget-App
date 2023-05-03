@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FidgetApp.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,37 @@ namespace FidgetApp.Windows
     {
         private Window currentWindow;
 
+        private readonly CommandBinding exitBinding;
+
         public AppControlWindow()
         {
             InitializeComponent();
+
+            exitBinding = new CommandBinding(CustomCommands.Exit);
+            exitBinding.CanExecute += ExitCommand_CanExecute;
+            exitBinding.Executed += ExitCommand_Executed;
+            CommandBindings.Add(exitBinding);
 
             currentWindow = new PhysicsBallWindow
             {
                 Tag = "0"
             };
+            currentWindow.CommandBindings.Add(exitBinding);
 
             currentWindow.Show();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
@@ -83,6 +102,7 @@ namespace FidgetApp.Windows
                         break;
                 }
                 currentWindow.Tag = currentTag;
+                currentWindow.CommandBindings.Add(exitBinding);
 
                 // Uncheck previous app mode toggle button
                 previousToggleButton.IsChecked = false;

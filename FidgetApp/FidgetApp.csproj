@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\AimTrainer.cs" />
     <Compile Include="Classes\Target.cs" />
+    <Compile Include="Commands\CustomCommands.cs" />
     <Compile Include="Windows\AimTrainerWindow.xaml.cs">
       <DependentUpon>AimTrainerWindow.xaml</DependentUpon>
     </Compile>

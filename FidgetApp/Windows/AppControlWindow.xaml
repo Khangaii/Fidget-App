@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:local="clr-namespace:FidgetApp.Windows"
+        xmlns:cmds="clr-namespace:FidgetApp.Commands"
         mc:Ignorable="d"
         Title="Fidger App" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
         WindowStyle="None" AllowsTransparency="True" Topmost="True" ShowInTaskbar="False"
@@ -78,7 +79,7 @@
                 <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">🎯</ToggleButton>
             </Grid>
 
-            <Button Grid.Row="2" Click="Exit">X</Button>
+            <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit">X</Button>
         </Grid>
     </Grid>
 </Window>
