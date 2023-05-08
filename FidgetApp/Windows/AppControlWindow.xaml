@@ -22,11 +22,13 @@
                     <Setter Property="Padding" Value="5" />
                     <Setter Property="Focusable" Value="False" />
                     <Setter Property="Background" Value="White" />
+                    <Setter Property="BorderThickness" Value="0" />
                 </Style>
                 <Style TargetType="ToggleButton">
                     <Setter Property="Padding" Value="5" />
                     <Setter Property="Focusable" Value="False" />
                     <Setter Property="Background" Value="White" />
+                    <Setter Property="BorderThickness" Value="0" />
                 </Style>
             </Grid.Resources>
 
@@ -35,9 +37,9 @@
             </Grid.ColumnDefinitions>
         
             <Grid.RowDefinitions>
-                <RowDefinition Height="25" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="25" />
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
 
             <tb:TaskbarIcon 
@@ -66,7 +68,7 @@
                 
             </tb:TaskbarIcon>
 
-            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse">▽</ToggleButton>
+            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse" >▽</ToggleButton>
 
             <Grid x:Name="AppModes" Grid.Row="1" Height="100">
                 <Grid.Resources>
@@ -74,6 +76,7 @@
                         <EventSetter Event="Checked" Handler="AppMode_Checked" />
                         <EventSetter Event="Unchecked" Handler="AppMode_Unchecked" />
                         <Setter Property="Background" Value="White" />
+                        <Setter Property="BorderThickness" Value="0" />
                     </Style>
                 </Grid.Resources>
             
