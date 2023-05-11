@@ -18,6 +18,7 @@ namespace FidgetApp.Windows
 {
     public partial class AppControlWindow : Window
     {
+        // Window corresponding to current mode
         private Window currentWindow;
 
         private readonly CommandBinding exitBinding;
@@ -26,6 +27,7 @@ namespace FidgetApp.Windows
         {
             InitializeComponent();
 
+            // Bind the exit command to self and children
             exitBinding = new CommandBinding(CustomCommands.Exit);
             exitBinding.CanExecute += ExitCommand_CanExecute;
             exitBinding.Executed += ExitCommand_Executed;
@@ -33,7 +35,7 @@ namespace FidgetApp.Windows
 
             currentWindow = new PhysicsBallWindow
             {
-                Tag = "0"
+                Tag = "0" // To differentiate between child windows
             };
             currentWindow.CommandBindings.Add(exitBinding);
 
@@ -55,14 +57,16 @@ namespace FidgetApp.Windows
             Application.Current.Shutdown();
         }
 
+        // Window drag
         private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
+        // Collapse or expand app menu when the toggle button is clicked
         private void AppMenu_ToggleCollapse(object sender, RoutedEventArgs e)
         {
-            if (MenuCollapse_ToggleButton.IsChecked == true)
+            if (MenuCollapse_ToggleButton.IsChecked == true) // Collapse
             {
                 MenuCollapse_ToggleButton.Content = "△";
                 for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
@@ -70,7 +74,7 @@ namespace FidgetApp.Windows
                     AppMenu.RowDefinitions[i].Height = new GridLength(0);
                 }
             }
-            else
+            else // Expand
             {
                 MenuCollapse_ToggleButton.Content = "▽";
                 for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
@@ -80,6 +84,7 @@ namespace FidgetApp.Windows
             }
         }
 
+        // Change app mode
         private void AppMode_Checked(object sender, RoutedEventArgs e)
         {
             ToggleButton toggleButton = sender as ToggleButton;
@@ -92,6 +97,7 @@ namespace FidgetApp.Windows
 
                 currentWindow.Close();
 
+                // Change app corresponding to tag
                 switch (currentTag)
                 {
                     case "0":
@@ -111,6 +117,7 @@ namespace FidgetApp.Windows
             }
         }
 
+        // Make app modes non-uncheckable
         private void AppMode_Unchecked(object sender, RoutedEventArgs e)
         {
             ToggleButton toggleButton = sender as ToggleButton;
@@ -120,6 +127,7 @@ namespace FidgetApp.Windows
             }
         }
 
+        // Keep app on top
         private void Window_Deactivated(object sender, EventArgs e)
         {
             this.Topmost = true;

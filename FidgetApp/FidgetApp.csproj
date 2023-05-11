@@ -73,6 +73,10 @@
     <Compile Include="Windows\PhysicsBallWindow.xaml.cs">
       <DependentUpon>PhysicsBallWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Styles\AppMenuStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AimTrainerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
