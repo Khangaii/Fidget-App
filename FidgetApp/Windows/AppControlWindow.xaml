@@ -11,31 +11,16 @@
         WindowStyle="None" AllowsTransparency="True" Topmost="True" ShowInTaskbar="False"
         Background="Transparent"
         Deactivated="Window_Deactivated">
-    <Grid Margin="20">
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="-90"
-                              RenderingBias="Quality" ShadowDepth="2"/>
-        </Grid.Effect>
+    <Window.Resources>
+        <ResourceDictionary Source="/FidgetApp;component/Resources/Styles/AppMenuStyle.xaml" />
+    </Window.Resources>
+    <Grid Style="{StaticResource Window}">
 
-        <Grid x:Name="AppMenu_DraggableStrip" VerticalAlignment="Top" MouseLeftButtonDown="DragBar_MouseLeftButtonDown">
-            <Rectangle Height="10" RadiusX="2" RadiusY="2" Fill="LightGray" />
+        <Grid x:Name="AppMenu_DraggableStrip" MouseLeftButtonDown="DragBar_MouseLeftButtonDown" Style="{StaticResource DraggableStrip}">
+            <Rectangle />
         </Grid>
-        
-        <Grid x:Name="AppMenu" Margin="0,15,0,0">
-            <Grid.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Padding" Value="5" />
-                    <Setter Property="Focusable" Value="False" />
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="BorderThickness" Value="0" />
-                </Style>
-                <Style TargetType="ToggleButton">
-                    <Setter Property="Padding" Value="5" />
-                    <Setter Property="Focusable" Value="False" />
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="BorderThickness" Value="0" />
-                </Style>
-            </Grid.Resources>
+
+        <Grid x:Name="AppMenu" Style="{StaticResource AppMenu}">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30" />
@@ -77,14 +62,12 @@
 
             <Grid x:Name="AppModes" Grid.Row="1">
                 <Grid.Resources>
-                    <Style TargetType="ToggleButton">
+                    <Style TargetType="ToggleButton" BasedOn="{StaticResource AppModes}">
                         <EventSetter Event="Checked" Handler="AppMode_Checked" />
                         <EventSetter Event="Unchecked" Handler="AppMode_Unchecked" />
-                        <Setter Property="Background" Value="White" />
-                        <Setter Property="BorderThickness" Value="0" />
                     </Style>
                 </Grid.Resources>
-            
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -92,9 +75,12 @@
             
                 <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">⚽</ToggleButton>
                 <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">🎯</ToggleButton>
+                
             </Grid>
 
             <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit">X</Button>
+            
         </Grid>
+        
     </Grid>
 </Window>
