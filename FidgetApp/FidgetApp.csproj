@@ -162,5 +162,16 @@
     <Resource Include="Resources\Images\DragBar_1.png" />
     <Resource Include="Resources\Images\DragBar_2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\DownArrow.png" />
+    <Resource Include="Resources\Images\Ball.png" />
+    <Resource Include="Resources\Images\Brush.png" />
+    <Resource Include="Resources\Images\Exit.png" />
+    <Resource Include="Resources\Images\Lantern.png" />
+    <Resource Include="Resources\Images\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Gun.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

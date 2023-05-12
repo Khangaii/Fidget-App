@@ -46,21 +46,31 @@
         <Setter Property="Margin" Value="0,15,0,0" />
 
         <Style.Resources>
-            
             <Style TargetType="Button">
                 <Setter Property="Padding" Value="5" />
                 <Setter Property="Focusable" Value="False" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
+
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0,0,5,5" />
+                    </Style>
+                </Style.Resources>
             </Style>
-            
+
             <Style TargetType="ToggleButton">
                 <Setter Property="Padding" Value="5" />
                 <Setter Property="Focusable" Value="False" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
+
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5,5,0,0" />
+                    </Style>
+                </Style.Resources>
             </Style>
-            
         </Style.Resources>
     </Style>
 
