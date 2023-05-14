@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:FidgetApp"
              StartupUri="Windows/AppControlWindow.xaml" >
     <Application.Resources>
-         
+        <ResourceDictionary Source="/FidgetApp;component/Resources/NotifyIcon/AppNotifyIcon.xaml" />
     </Application.Resources>
 </Application>

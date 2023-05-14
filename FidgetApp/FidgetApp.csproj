@@ -61,6 +61,12 @@
     <Compile Include="Classes\AimTrainer.cs" />
     <Compile Include="Classes\Target.cs" />
     <Compile Include="Commands\CustomCommands.cs" />
+    <Compile Include="Controls\TrayPopup.xaml.cs">
+      <DependentUpon>TrayPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TrayToolTip.xaml.cs">
+      <DependentUpon>TrayToolTip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AimTrainerWindow.xaml.cs">
       <DependentUpon>AimTrainerWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +79,18 @@
     <Compile Include="Windows\PhysicsBallWindow.xaml.cs">
       <DependentUpon>PhysicsBallWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\TrayPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TrayToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\NotifyIcon\AppNotifyIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\AppMenuStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,7 +153,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>

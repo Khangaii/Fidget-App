@@ -1,4 +1,5 @@
 ﻿using FidgetApp.Commands;
+using Hardcodet.Wpf.TaskbarNotification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,16 @@ namespace FidgetApp.Windows
         // Window corresponding to current mode
         private Window currentWindow;
 
+        // NotifyIcon
+        private TaskbarIcon notifyIcon;
+
         private readonly CommandBinding exitBinding;
 
         public AppControlWindow()
         {
             InitializeComponent();
+
+            notifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
 
             // Bind the exit command to self and children
             exitBinding = new CommandBinding(CustomCommands.Exit);
