@@ -11,7 +11,12 @@
         Background="Transparent"
         Deactivated="Window_Deactivated">
     <Window.Resources>
-        <ResourceDictionary Source="/FidgetApp;component/Resources/Styles/AppMenuStyle.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FidgetApp;component/Resources/Styles/AppMenuStyle.xaml" />
+                <ResourceDictionary Source="/FidgetApp;component/Resources/NotifyIcon/AppNotifyIcon.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Style="{StaticResource Window}">
 

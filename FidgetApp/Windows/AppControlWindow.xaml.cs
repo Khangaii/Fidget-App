@@ -24,8 +24,9 @@ namespace FidgetApp.Windows
 
         // NotifyIcon
         private TaskbarIcon notifyIcon;
-
+        
         private readonly CommandBinding exitBinding;
+        public static readonly RoutedCommand Exit = new RoutedCommand("Exit", typeof(CustomCommands));
 
         public AppControlWindow()
         {
@@ -37,7 +38,7 @@ namespace FidgetApp.Windows
             exitBinding = new CommandBinding(CustomCommands.Exit);
             exitBinding.CanExecute += ExitCommand_CanExecute;
             exitBinding.Executed += ExitCommand_Executed;
-            CommandBindings.Add(exitBinding);
+            this.CommandBindings.Add(exitBinding);
 
             currentWindow = new PhysicsBallWindow
             {
@@ -46,11 +47,9 @@ namespace FidgetApp.Windows
             currentWindow.CommandBindings.Add(exitBinding);
 
             currentWindow.Show();
-        }
 
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+            var appNotifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
+            appNotifyIcon.ContextMenu.CommandBindings.Add(exitBinding);
         }
 
         private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
