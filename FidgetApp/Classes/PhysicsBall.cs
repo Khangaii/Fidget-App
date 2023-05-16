@@ -31,7 +31,7 @@ namespace FidgetApp.Classes
         // Offset between the corner from which the ball is drawn and the center of the ball
         private Vector _positionOffset;
         // Offset between the center of the ball and the dragged point
-        private Vector _dragOffsest;
+        private Vector _dragOffest;
 
         // The i and j unit vectors
         private readonly Vector _iVector = new Vector(1, 0);
@@ -82,7 +82,7 @@ namespace FidgetApp.Classes
             _velocity.X = 0;
             _velocity.Y = 0;
 
-            _dragOffsest = (Vector)e.GetPosition(_parentCanvas) - _position;
+            _dragOffest = (Vector)e.GetPosition(_parentCanvas) - _position;
         }
 
         private void _uiElement_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -90,7 +90,7 @@ namespace FidgetApp.Classes
             // Drag the ball with a slight delay
             if (_uiElement.IsMouseCaptured)
             {
-                Vector dragPosition = (Vector)e.GetPosition(_parentCanvas) - _dragOffsest;
+                Vector dragPosition = (Vector)e.GetPosition(_parentCanvas) - _dragOffest;
                 _velocity = Vector.Subtract( dragPosition, _position ) / 2;
             }
         }
@@ -162,7 +162,8 @@ namespace FidgetApp.Classes
                 _velocity.X *= -_bounceDampeningConstant;
 
                 isTouchingHorizontalWalls = true;
-            } else if (_position.X + _radius > _parentCanvas.ActualWidth)
+            } 
+            else if (_position.X + _radius > _parentCanvas.ActualWidth)
             {
                 _position.X = _parentCanvas.ActualWidth - _radius;
                 _velocity.X *= -_bounceDampeningConstant;
@@ -176,7 +177,8 @@ namespace FidgetApp.Classes
                 _velocity.Y *= -_bounceDampeningConstant;
 
                 isTouchingVerticalWalls = true;
-            } else if (_position.Y + _radius > _parentCanvas.ActualHeight)
+            } 
+            else if (_position.Y + _radius > _parentCanvas.ActualHeight)
             {
                 _position.Y = _parentCanvas.ActualHeight - _radius;
                 _velocity.Y *= -_bounceDampeningConstant;
