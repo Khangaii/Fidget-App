@@ -31,7 +31,7 @@ namespace FidgetApp.Classes
         // Offset between the corner from which the ball is drawn and the center of the ball
         private Vector _positionOffset;
         // Offset between the center of the ball and the dragged point
-        private Vector _dragOffest;
+        private Vector _dragOffset;
 
         // The i and j unit vectors
         private readonly Vector _iVector = new Vector(1, 0);
@@ -82,7 +82,7 @@ namespace FidgetApp.Classes
             _velocity.X = 0;
             _velocity.Y = 0;
 
-            _dragOffest = (Vector)e.GetPosition(_parentCanvas) - _position;
+            _dragOffset = (Vector)e.GetPosition(_parentCanvas) - _position;
         }
 
         private void _uiElement_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -90,7 +90,7 @@ namespace FidgetApp.Classes
             // Drag the ball with a slight delay
             if (_uiElement.IsMouseCaptured)
             {
-                Vector dragPosition = (Vector)e.GetPosition(_parentCanvas) - _dragOffest;
+                Vector dragPosition = (Vector)e.GetPosition(_parentCanvas) - _dragOffset;
                 _velocity = Vector.Subtract( dragPosition, _position ) / 2;
             }
         }
