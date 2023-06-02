@@ -24,6 +24,13 @@
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Padding" Value="0" />
             </Style>
+
+            <Style TargetType="Image">
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Margin" Value="5" />
+            </Style>
         </Style.Resources>
     </Style>
 
@@ -47,7 +54,7 @@
 
         <Style.Resources>
             <Style TargetType="Button">
-                <Setter Property="Padding" Value="5" />
+                <Setter Property="Padding" Value="3" />
                 <Setter Property="Focusable" Value="False" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
@@ -60,7 +67,7 @@
             </Style>
 
             <Style TargetType="ToggleButton">
-                <Setter Property="Padding" Value="5" />
+                <Setter Property="Padding" Value="3" />
                 <Setter Property="Focusable" Value="False" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />

@@ -26,16 +26,16 @@ namespace FidgetApp.Classes
         {
             _parentCanvas = parentCanvas;
 
-            BitmapImage imageSource = new BitmapImage();
-            imageSource.BeginInit();
-            imageSource.UriSource = new Uri("../Resources/Images/Target_2.png", UriKind.Relative);
-            imageSource.EndInit();
+            BitmapImage targetImage = new BitmapImage();
+            targetImage.BeginInit();
+            targetImage.UriSource = new Uri("../Resources/Images/Target.png", UriKind.Relative);
+            targetImage.EndInit();
 
             _uiElement = new Image
             {
                 Width = radius * 2,
                 Height = radius * 2,
-                Source = imageSource,
+                Source = targetImage,
                 Opacity = 0.75
             };
             _parentCanvas.Children.Add(_uiElement);

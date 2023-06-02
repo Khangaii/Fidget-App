@@ -14,6 +14,22 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +49,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>EE17956A64DF56844D114B3324E95672A7838775</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FidgetApp_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
@@ -129,6 +157,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="FidgetApp_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -149,33 +178,31 @@
     <Resource Include="Resources\Images\FidgetSpinner.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Target_1.png" />
-    <Resource Include="Resources\Images\Target_2.png" />
+    <Resource Include="Resources\Images\Target.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Target_10.png" />
-    <Resource Include="Resources\Images\Target_3.png" />
-    <Resource Include="Resources\Images\Target_4.png" />
-    <Resource Include="Resources\Images\Target_5.png" />
-    <Resource Include="Resources\Images\Target_6.png" />
-    <Resource Include="Resources\Images\Target_7.png" />
-    <Resource Include="Resources\Images\Target_8.png" />
-    <Resource Include="Resources\Images\Target_9.png" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\DragBar_1.png" />
-    <Resource Include="Resources\Images\DragBar_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\DownArrow.png" />
-    <Resource Include="Resources\Images\Ball.png" />
-    <Resource Include="Resources\Images\Brush.png" />
-    <Resource Include="Resources\Images\Exit.png" />
-    <Resource Include="Resources\Images\Lantern.png" />
-    <Resource Include="Resources\Images\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Gun.png" />
+    <Resource Include="Resources\Images\icons8-close-32.png" />
+    <Resource Include="Resources\Images\icons8-collapse-arrow-32.png" />
+    <Resource Include="Resources\Images\icons8-desk-lamp-32.png" />
+    <Resource Include="Resources\Images\icons8-illustrator-32.png" />
+    <Resource Include="Resources\Images\icons8-my-location-32.png" />
+    <Resource Include="Resources\Images\icons8-paint-32.png" />
+    <Resource Include="Resources\Images\icons8-settings-32.png" />
+    <Resource Include="Resources\Images\icons8-soccer-ball-32.png" />
+    <Resource Include="Resources\Images\icons8-sphere-32.png" />
+    <Resource Include="Resources\Images\icons8-target-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

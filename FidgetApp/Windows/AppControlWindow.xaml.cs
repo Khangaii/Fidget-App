@@ -73,7 +73,7 @@ namespace FidgetApp.Windows
         {
             if (MenuCollapse_ToggleButton.IsChecked == true) // Collapse
             {
-                MenuCollapse_ToggleButton.Content = "△";
+                CollapseArrow_Image.RenderTransform = new ScaleTransform() { ScaleY = -1 };
                 for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
                 {
                     AppMenu.RowDefinitions[i].Height = new GridLength(0);
@@ -81,7 +81,7 @@ namespace FidgetApp.Windows
             }
             else // Expand
             {
-                MenuCollapse_ToggleButton.Content = "▽";
+                CollapseArrow_Image.RenderTransform = new ScaleTransform() { ScaleY = 1 };
                 for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
                 {
                     AppMenu.RowDefinitions[i].Height = GridLength.Auto;

@@ -36,7 +36,9 @@
                 <RowDefinition Height="30" />
             </Grid.RowDefinitions>
 
-            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse" >▽</ToggleButton>
+            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse" >
+                <Image x:Name="CollapseArrow_Image" Source="../Resources/Images/icons8-collapse-arrow-32.png" RenderTransformOrigin="0.5,0.5" />
+            </ToggleButton>
 
             <Grid x:Name="AppModes" Grid.Row="1">
                 <Grid.Resources>
@@ -51,12 +53,18 @@
                     <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
 
-                <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">⚽</ToggleButton>
-                <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">🎯</ToggleButton>
+                <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">
+                    <Image Source="../Resources/Images/icons8-sphere-32.png" />
+                </ToggleButton>
+                <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">
+                    <Image Source="../Resources/Images/icons8-target-32.png" />
+                </ToggleButton>
                 
             </Grid>
 
-            <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit">X</Button>
+            <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit">
+                <Image Source="../Resources/Images/icons8-close-32.png" />
+            </Button>
             
         </Grid>
         
