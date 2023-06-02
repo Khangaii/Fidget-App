@@ -46,10 +46,15 @@ namespace FidgetApp.Windows
             };
             currentWindow.CommandBindings.Add(exitBinding);
 
-            currentWindow.Show();
-
             var appNotifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
             appNotifyIcon.ContextMenu.CommandBindings.Add(exitBinding);
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            currentWindow.Owner = this;
+
+            currentWindow.Show();
         }
 
         private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -112,6 +117,7 @@ namespace FidgetApp.Windows
                         currentWindow = new AimTrainerWindow();
                         break;
                 }
+                currentWindow.Owner = this;
                 currentWindow.Tag = currentTag;
                 currentWindow.CommandBindings.Add(exitBinding);
 

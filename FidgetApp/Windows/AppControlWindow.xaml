@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:FidgetApp.Windows"
         xmlns:cmds="clr-namespace:FidgetApp.Commands"
         mc:Ignorable="d"
-        Title="Fidger App" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
+        Title="Fidget App" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Left="1400" Top="200"
         WindowStyle="None" AllowsTransparency="True" Topmost="True" ShowInTaskbar="False"
         Background="Transparent"
-        Deactivated="Window_Deactivated">
+        Deactivated="Window_Deactivated" ContentRendered="Window_ContentRendered">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
