@@ -40,18 +40,17 @@ namespace FidgetApp.Windows
             exitBinding.Executed += ExitCommand_Executed;
             this.CommandBindings.Add(exitBinding);
 
-            currentWindow = new PhysicsBallWindow
-            {
-                Tag = "0" // To differentiate between child windows
-            };
-            currentWindow.CommandBindings.Add(exitBinding);
-
             var appNotifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
             appNotifyIcon.ContextMenu.CommandBindings.Add(exitBinding);
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            currentWindow = new PhysicsBallWindow
+            {
+                Tag = "0" // To differentiate between child windows
+            };
+            currentWindow.CommandBindings.Add(exitBinding);
             currentWindow.Owner = this;
 
             currentWindow.Show();
@@ -79,14 +78,17 @@ namespace FidgetApp.Windows
             if (MenuCollapse_ToggleButton.IsChecked == true) // Collapse
             {
                 CollapseArrow_Image.RenderTransform = new ScaleTransform() { ScaleY = -1 };
+                MenuCollapse_ToggleButton.Style = (Style)FindResource("Button_Round");
                 for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
                 {
                     AppMenu.RowDefinitions[i].Height = new GridLength(0);
                 }
+                
             }
             else // Expand
             {
                 CollapseArrow_Image.RenderTransform = new ScaleTransform() { ScaleY = 1 };
+                MenuCollapse_ToggleButton.Style = (Style)FindResource("Button_RoundTop");
                 for (int i = 1; i < AppMenu.RowDefinitions.Count; i++)
                 {
                     AppMenu.RowDefinitions[i].Height = GridLength.Auto;

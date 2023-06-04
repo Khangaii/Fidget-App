@@ -36,7 +36,7 @@
                 <RowDefinition Height="30" />
             </Grid.RowDefinitions>
 
-            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse" >
+            <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse" Style="{StaticResource Button_RoundTop}">
                 <Image x:Name="CollapseArrow_Image" Source="../Resources/Images/icons8-collapse-arrow-32.png" RenderTransformOrigin="0.5,0.5" />
             </ToggleButton>
 
@@ -62,7 +62,7 @@
                 
             </Grid>
 
-            <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit">
+            <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit" Style="{StaticResource Button_RoundBottom}">
                 <Image Source="../Resources/Images/icons8-close-32.png" />
             </Button>
             
