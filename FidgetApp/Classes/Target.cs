@@ -28,7 +28,7 @@ namespace FidgetApp.Classes
 
             BitmapImage targetImage = new BitmapImage();
             targetImage.BeginInit();
-            targetImage.UriSource = new Uri("../Resources/Images/icons8-accuracy-80.png", UriKind.Relative);
+            targetImage.UriSource = new Uri("../Resources/Images/target.png", UriKind.Relative);
             targetImage.EndInit();
 
             _uiElement = new Image
