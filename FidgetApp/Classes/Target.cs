@@ -28,7 +28,7 @@ namespace FidgetApp.Classes
 
             BitmapImage targetImage = new BitmapImage();
             targetImage.BeginInit();
-            targetImage.UriSource = new Uri("../Resources/Images/Target.png", UriKind.Relative);
+            targetImage.UriSource = new Uri("../Resources/Images/icons8-accuracy-80.png", UriKind.Relative);
             targetImage.EndInit();
 
             _uiElement = new Image
@@ -36,7 +36,7 @@ namespace FidgetApp.Classes
                 Width = radius * 2,
                 Height = radius * 2,
                 Source = targetImage,
-                Opacity = 0.75
+                Opacity = 1
             };
             _parentCanvas.Children.Add(_uiElement);
 
