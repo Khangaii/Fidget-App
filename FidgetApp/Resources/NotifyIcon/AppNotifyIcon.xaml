@@ -20,7 +20,7 @@
     <tb:TaskbarIcon x:Key="AppNotifyIcon"
                     IconSource="/Resources/Icons/FidgetSpinner.ico"
                     ToolTipText="Fidget App"
-                    ToolTip="{StaticResource TrayTooltip}"
+                    TrayToolTip="{StaticResource TrayTooltip}"
                     ContextMenu="{StaticResource TrayContextMenu}"
                     Visibility="Visible"
                     MenuActivation="RightClick" />
