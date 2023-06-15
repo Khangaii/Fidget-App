@@ -1,0 +1,43 @@
+﻿<Window x:Class="FidgetApp.Windows.Example"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FidgetApp.Windows"
+        mc:Ignorable="d"
+        Title="Example" Height="450" Width="800">
+    
+    
+    <StackPanel>
+        <StackPanel.Style>
+            <Style>
+                <Setter Property="StackPanel.Background" Value="AntiqueWhite" />
+
+                <Style.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontStyle" Value="Italic" />
+                        <Setter Property="FontSize" Value="20" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </StackPanel.Style>
+
+        <TextBlock Text="Header">
+            <TextBlock.Style>
+                <Style>
+                    <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock Text="Example paragraph">
+            <TextBlock.Style>
+                <Style>
+                    <Setter Property="TextBlock.Background" Value="Yellow" />
+                    <Setter Property="TextBlock.Foreground" Value="DimGray" />
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </StackPanel>
+        
+        
+</Window>
