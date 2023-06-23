@@ -13,6 +13,9 @@ using System.Windows.Shapes;
 
 namespace FidgetApp.Classes
 {
+    /// <summary>
+    /// Interaction logic for the PhysicsBall class
+    /// </summary>
     internal class PhysicsBall
     {
         // Canvas to draw on
@@ -48,6 +51,15 @@ namespace FidgetApp.Classes
         private double _windResistanceConstant = 0.00005;
         private double _bounceDampeningConstant = 0.97;
 
+        /// <summary>
+        /// PhysicsBall class constructor
+        /// </summary>
+        /// <param name="parentCanvas">Canvas to draw on</param>
+        /// <param name="radius">Radius of the ball</param>
+        /// <param name="color">Color of the ball</param>
+        /// <param name="position">Initial position of the ball</param>
+        /// <param name="velocity">Initial velocity of the ball</param>
+        /// <param name="acceleration">Initial acceleration of the ball</param>
         public PhysicsBall(Canvas parentCanvas, double radius, Color color, 
                            Vector position, Vector? velocity = null, Vector? acceleration = null)
         {
@@ -69,11 +81,13 @@ namespace FidgetApp.Classes
             _velocity = velocity ?? new Vector(0, 0);
             _acceleration = acceleration ?? new Vector(0, 0);
 
+            // Event listeners
             _uiElement.PreviewMouseLeftButtonDown += _uiElement_PreviewMouseLeftButtonDown;
             _uiElement.PreviewMouseMove += _uiElement_PreviewMouseMove;
             _uiElement.PreviewMouseLeftButtonUp += _uiElement_PreviewMouseLeftButtonUp;
         }
 
+        // Start dragging the ball
         private void _uiElement_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Grab the ball
@@ -85,6 +99,7 @@ namespace FidgetApp.Classes
             _dragOffset = (Vector)e.GetPosition(_parentCanvas) - _position;
         }
 
+        // Drag the ball
         private void _uiElement_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             // Drag the ball with a slight delay
@@ -95,12 +110,13 @@ namespace FidgetApp.Classes
             }
         }
 
+        // Release the ball
         private void _uiElement_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // Release the ball
             _uiElement.ReleaseMouseCapture();
         }
 
+        // Apply force onto the ball
         private void ApplyForce(Vector force)
         {
             _acceleration += force / _mass;
@@ -127,6 +143,7 @@ namespace FidgetApp.Classes
 
         public void Update()
         {
+            // Don't apply gravity if in drag motion
             if(!_uiElement.IsMouseCaptured)
                 ApplyForce(getGravityForce());
 
@@ -140,9 +157,11 @@ namespace FidgetApp.Classes
 
             DetectCollision();
 
+            // Set previous frame's mouse position
             _previousMousePosition = (Vector)Mouse.GetPosition(_parentCanvas);
         }
 
+        // Draw the ball's UIElement onto the parent canvas
         public void Draw()
         {
             Vector newPosition = Vector.Subtract(_position, new Vector(_radius, _radius));
@@ -151,6 +170,7 @@ namespace FidgetApp.Classes
             Canvas.SetTop(_uiElement, newPosition.Y);
         }
 
+        // Detect and respond to collision with screen borders
         private void DetectCollision()
         {
             bool isTouchingHorizontalWalls = false;

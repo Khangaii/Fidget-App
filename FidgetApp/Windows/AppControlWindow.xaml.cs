@@ -17,6 +17,9 @@ using System.Windows.Shapes;
 
 namespace FidgetApp.Windows
 {
+    /// <summary>
+    /// Back-end code for the AppControlWindow
+    /// </summary>
     public partial class AppControlWindow : Window
     {
         // Window corresponding to current mode
@@ -25,27 +28,34 @@ namespace FidgetApp.Windows
         // NotifyIcon
         private TaskbarIcon notifyIcon;
         
+        // CommandBinding for the Exit command
         private readonly CommandBinding exitBinding;
         public static readonly RoutedCommand Exit = new RoutedCommand("Exit", typeof(CustomCommands));
 
+        /// <summary>
+        /// AppControlWindow constructor
+        /// </summary>
         public AppControlWindow()
         {
             InitializeComponent();
 
-            notifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
-
-            // Bind the exit command to self and children
+            // Bind the exit command to self
             exitBinding = new CommandBinding(CustomCommands.Exit);
             exitBinding.CanExecute += ExitCommand_CanExecute;
             exitBinding.Executed += ExitCommand_Executed;
             this.CommandBindings.Add(exitBinding);
 
-            var appNotifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
-            appNotifyIcon.ContextMenu.CommandBindings.Add(exitBinding);
+            // Bind the exit command to the NotifyIcon context menu
+            notifyIcon = (TaskbarIcon)FindResource("AppNotifyIcon");
+            notifyIcon.ContextMenu.CommandBindings.Add(exitBinding);
         }
 
+        /// <summary>
+        /// Window Content Rendered event handler
+        /// </summary>
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            // Default starting mode is PhysicsBallWindow
             currentWindow = new PhysicsBallWindow
             {
                 Tag = "0" // To differentiate between child windows
@@ -56,23 +66,35 @@ namespace FidgetApp.Windows
             currentWindow.Show();
         }
 
+        /// <summary>
+        /// ExitCommand CanExecute method
+        /// </summary>
         private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
 
+        /// <summary>
+        /// ExitCommand Executed method that quits the application
+        /// </summary>
         private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        // Window drag
+        /// <summary>
+        /// Drag the window when the drag bar is clicked
+        /// </summary>
         private void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
-        // Collapse or expand app menu when the toggle button is clicked
+        /// <summary>
+        /// Collapse or expand app menu when the toggle button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AppMenu_ToggleCollapse(object sender, RoutedEventArgs e)
         {
             if (MenuCollapse_ToggleButton.IsChecked == true) // Collapse
@@ -96,7 +118,9 @@ namespace FidgetApp.Windows
             }
         }
 
-        // Change app mode
+        /// <summary>
+        /// Change app mode
+        /// </summary>
         private void AppMode_Checked(object sender, RoutedEventArgs e)
         {
             ToggleButton toggleButton = sender as ToggleButton;
@@ -130,7 +154,9 @@ namespace FidgetApp.Windows
             }
         }
 
-        // Make app modes non-uncheckable
+        /// <summary>
+        /// Make app modes non-uncheckable
+        /// </summary>
         private void AppMode_Unchecked(object sender, RoutedEventArgs e)
         {
             ToggleButton toggleButton = sender as ToggleButton;
@@ -140,7 +166,9 @@ namespace FidgetApp.Windows
             }
         }
 
-        // Keep app on top
+        /// <summary>
+        /// Keep window on top
+        /// </summary>
         private void Window_Deactivated(object sender, EventArgs e)
         {
             this.Topmost = true;

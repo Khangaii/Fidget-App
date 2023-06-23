@@ -10,8 +10,6 @@
         AllowsTransparency="True" Background="Transparent" Topmost="True"
         ContentRendered="Window_ContentRendered" Deactivated="Window_Deactivated">
     <Grid>
-        <Canvas x:Name="AppCanvas">
-            
-        </Canvas>
+        <Canvas x:Name="AppCanvas" />
     </Grid>
 </Window>

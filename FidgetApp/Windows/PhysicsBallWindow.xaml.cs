@@ -18,11 +18,18 @@ using System.Windows.Threading;
 
 namespace FidgetApp.Windows
 {
+    /// <summary>
+    /// Back-end code for the PhysicsBallWindow
+    /// </summary>
     public partial class PhysicsBallWindow : Window
     {
+        // The mouse position from the previous frame
         public Vector previousMousePosition;
 
+        // PhysicsBall object
         private PhysicsBall physicsBall;
+
+        // Ball variables
         private double ballRadius = 75;
         private Color ballColor;
 
@@ -33,6 +40,9 @@ namespace FidgetApp.Windows
             ballColor = Color.FromArgb(255, 114, 134, 211);
         }
 
+        /// <summary>
+        /// Graphic renderer function
+        /// </summary>
         private void CompositionTarget_Rendering(object sender, EventArgs e)
         {
             physicsBall.Update();
@@ -42,6 +52,9 @@ namespace FidgetApp.Windows
             previousMousePosition.Y = Mouse.GetPosition(this).Y;
         }
 
+        /// <summary>
+        /// Window Content Rendered event handler
+        /// </summary>
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             previousMousePosition.X = Mouse.GetPosition(this).X;
@@ -53,9 +66,13 @@ namespace FidgetApp.Windows
 
             physicsBall.Draw();
 
+            // Set graphic renderer
             CompositionTarget.Rendering += CompositionTarget_Rendering;
         }
 
+        /// <summary>
+        /// Keep window on top
+        /// </summary>
         private void Window_Deactivated(object sender, EventArgs e)
         {
             this.Topmost = true;

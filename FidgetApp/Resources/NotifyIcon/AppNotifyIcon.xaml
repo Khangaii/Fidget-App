@@ -3,7 +3,7 @@
                     xmlns:cmds="clr-namespace:FidgetApp.Commands"
                     xmlns:tb="http://www.hardcodet.net/taskbar">
     
-
+    <!-- Tooltip for the NotifyIcon -->
     <Grid x:Key="TrayTooltip">
         <Border Background="#313331" BorderBrush="Black" CornerRadius="5" Margin="0"  Padding="10" BorderThickness="0.2">
             <Border.Effect>
@@ -13,10 +13,12 @@
         </Border>
     </Grid>
 
+    <!-- Context menu for the NotifyIcon -->
     <ContextMenu x:Key="TrayContextMenu">
         <MenuItem Header="Exit" Command="{x:Static cmds:CustomCommands.Exit}" />
     </ContextMenu>
 
+    <!-- NotifyIcon resource -->
     <tb:TaskbarIcon x:Key="AppNotifyIcon"
                     IconSource="/Resources/Icons/FidgetSpinner.ico"
                     ToolTipText="Fidget App"

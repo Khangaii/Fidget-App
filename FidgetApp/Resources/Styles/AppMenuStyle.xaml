@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!-- Style for windows -->
     <Style x:Key="Window" TargetType="Grid">
         <Setter Property="Margin" Value="20" />
         <Setter Property="Effect">
@@ -34,6 +35,7 @@
         </Style.Resources>
     </Style>
 
+    <!-- Style for the draggable strip -->
     <Style x:Key="DraggableStrip" TargetType="Grid">
         <Setter Property="VerticalAlignment" Value="Top" />
 
@@ -48,6 +50,7 @@
         </Style.Resources>
     </Style>
 
+    <!-- Base style for buttons -->
     <Style x:Key="ButtonBase" TargetType="{x:Type ButtonBase}">
         <Setter Property="Padding" Value="2" />
         <Setter Property="Focusable" Value="False" />
@@ -55,7 +58,7 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
     
-
+    <!-- Style for the app menu -->
     <Style x:Key="AppMenu" TargetType="Grid">
         <Setter Property="Margin" Value="0,15,0,0" />
 
@@ -65,11 +68,13 @@
         </Style.Resources>
     </Style>
 
+    <!-- Style for the app mode selection grid -->
     <Style x:Key="AppModes" TargetType="ToggleButton">
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
+    <!-- Style for a button with a rounded top -->
     <Style x:Key="Button_RoundTop" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource ButtonBase}">
         <Style.Resources>
             <Style TargetType="Border">
@@ -78,6 +83,7 @@
         </Style.Resources>
     </Style>
 
+    <!-- Style for a button with a rounded bottom -->
     <Style x:Key="Button_RoundBottom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource ButtonBase}">
         <Style.Resources>
             <Style TargetType="Border">
@@ -86,6 +92,7 @@
         </Style.Resources>
     </Style>
 
+    <!-- Style for a button rounded corners -->
     <Style x:Key="Button_Round" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource ButtonBase}">
         <Style.Resources>
             <Style TargetType="Border">

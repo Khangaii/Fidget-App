@@ -11,21 +11,32 @@ using System.Windows.Shapes;
 
 namespace FidgetApp.Classes
 {
+    /// <summary>
+    /// Interaction logic for the Target class
+    /// </summary>
     internal class Target
     {
         // Canvas to draw on
         Canvas _parentCanvas { get; set; }
 
+        // Target UIElement
         private Image _uiElement;
 
         private double _radius;
 
         private Vector _position;
 
+        /// <summary>
+        /// Target constructor
+        /// </summary>
+        /// <param name="parentCanvas">Canvas to draw on</param>
+        /// <param name="radius">Radius of the target</param>
+        /// <param name="position">Initial position of the target</param>
         public Target(Canvas parentCanvas, double radius, Vector position)
         {
             _parentCanvas = parentCanvas;
 
+            // Import image
             BitmapImage targetImage = new BitmapImage();
             targetImage.BeginInit();
             targetImage.UriSource = new Uri("../Resources/Images/target.png", UriKind.Relative);
@@ -44,6 +55,7 @@ namespace FidgetApp.Classes
 
             _position = position;
 
+            // Event listeners
             _uiElement.PreviewMouseLeftButtonDown += _uiElement_PreviewMouseLeftButtonDown;
         }
 
@@ -60,6 +72,7 @@ namespace FidgetApp.Classes
             Canvas.SetTop(_uiElement, newPosition.Y);
         }
 
+        // Move target to a random position on the canvas
         public void Refresh()
         {
             Random random = new Random();

@@ -11,7 +11,7 @@ using System.Windows.Input;
 namespace FidgetApp
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Back-end code for App.xaml
     /// </summary>
     public partial class App : Application
     {

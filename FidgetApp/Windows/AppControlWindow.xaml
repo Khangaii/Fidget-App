@@ -18,12 +18,15 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    
     <Grid Style="{StaticResource Window}">
 
+        <!-- Strip to drag the window with -->
         <Grid x:Name="AppMenu_DraggableStrip" MouseLeftButtonDown="DragBar_MouseLeftButtonDown" Style="{StaticResource DraggableStrip}">
             <Rectangle />
         </Grid>
 
+        <!-- The app menu -->
         <Grid x:Name="AppMenu" Style="{StaticResource AppMenu}">
 
             <Grid.ColumnDefinitions>
@@ -36,10 +39,12 @@
                 <RowDefinition Height="30" />
             </Grid.RowDefinitions>
 
+            <!-- Button to toggle the collapse of the menu -->
             <ToggleButton x:Name="MenuCollapse_ToggleButton" Grid.Row="0" Click="AppMenu_ToggleCollapse" Style="{StaticResource Button_RoundTop}">
                 <Image x:Name="CollapseArrow_Image" Source="../Resources/Images/icons8-collapse-arrow-32.png" RenderTransformOrigin="0.5,0.5" />
             </ToggleButton>
 
+            <!-- Grid containing app modes -->
             <Grid x:Name="AppModes" Grid.Row="1">
                 <Grid.Resources>
                     <Style TargetType="ToggleButton" BasedOn="{StaticResource AppModes}">
@@ -53,15 +58,18 @@
                     <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
 
+                <!-- Button for activating the PhysicsBallWindow -->
                 <ToggleButton x:Name="PhysicsBallMode" Grid.Row="0" Tag="0" IsChecked="True">
                     <Image Source="../Resources/Images/icons8-sphere-32.png" />
                 </ToggleButton>
+                <!-- Button for activating the AimTrainerWindow -->
                 <ToggleButton x:Name="AimTrainerMode" Grid.Row="1" Tag="1">
                     <Image Source="../Resources/Images/icons8-target-32.png" />
                 </ToggleButton>
                 
             </Grid>
 
+            <!-- Button to end the application -->
             <Button x:Name="Exit_Button" Grid.Row="2" Command="cmds:CustomCommands.Exit" Style="{StaticResource Button_RoundBottom}">
                 <Image Source="../Resources/Images/icons8-close-32.png" />
             </Button>
